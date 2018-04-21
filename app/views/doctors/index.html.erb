@@ -1,0 +1,38 @@
+<h1>Doctors</h1>
+
+ <%= form_tag(doctors_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Doctors" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Speciality</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+       <th scope="col" colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @doctors.each do |doctor| %>
+      <tr>
+        <td><%= doctor.name %></td>
+        <td><%= doctor.surname %></td>
+        <td><%= doctor.speciality %></td>
+        <td><%= doctor.phone %></td>
+        <td><%= doctor.email %></td>
+        <td><%= link_to 'Show', doctor, class:"btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_doctor_path(doctor), class:"btn btn-success" %></td>
+        <td><%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+     
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Doctor', new_doctor_path %>

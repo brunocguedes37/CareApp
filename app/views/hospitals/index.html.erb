@@ -1,0 +1,38 @@
+<h1>Hospitals</h1>
+
+<%= form_tag(hospitals_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Hospitals" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+ <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+      <th scope="col">photo</th>
+  
+    </tr>
+  </thead>
+  <tbody>
+    <% @hospitals.each do |hospital| %>
+      <tr>
+        <td><%= hospital.name %></td>
+        <td><%= hospital.address %></td>
+        <td><%= hospital.phone %></td>
+        <td><%= hospital.email %></td>
+        <td><%= image_tag hospital.image.url(:medium), class:"img-thumbnail" %></td>
+        <td><%= link_to 'Show', hospital, class:"btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_hospital_path(hospital), class:"btn btn-success" %></td>
+        <td><%= link_to 'Destroy', hospital, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+     
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hospital', new_hospital_path %>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @patient.name %>
+</p>
+<p>
+  <strong>Surname:</strong>
+  <%= @patient.surname %>
+</p>
+<p>
+  <strong>Age:</strong>
+  <%= @patient.age %>
+</p>
+<p>
+  <strong>Phone:</strong>
+  <%= @patient.phone %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @patient.address %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @patient.email %>
+</p>
+
+
+<!-- Display the observations of a patient -->
+<h2>Observations</h2>
+<% @patient.observations.each do |observation| %>
+<p>
+<b>infection:</b>
+<%= observation.infection %>
+<b>summary:</b>
+<%= observation.summary %>
+</p>
+<% end %>
+
+
+
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>
+<%= link_to 'Show Observations', patient_observation_path(@patient) %>
+<%= link_to 'New ', new_patient_observation_path(@patient) %>

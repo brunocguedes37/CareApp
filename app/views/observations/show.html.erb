@@ -1,0 +1,8 @@
+<h1>Observation in <%= @patient.name %></h1>
+<p>
+<b>Observation details:</b>
+<%= @observations.infection %>
+<%= @observations.summary %>
+</p>
+<%= link_to 'Edit', edit_patient_observation_path(@patient, @observations) %> |
+<%= link_to 'Back', patient_observations_path(@patient) %>
